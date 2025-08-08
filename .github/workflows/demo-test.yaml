@@ -1,5 +1,5 @@
 name: Gitea Actions Test
-run-name: ${{ git.actor }} is testing out Gitea Actions 🚀
+run-name: ${{ github.actor }} is testing out Gitea Actions 🚀
 on:
   workflow_dispatch:
   push:
@@ -14,13 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: List job trigger
-        run: echo "🎉 The job was automatically triggered by a ${{ git.event_name }} event."
+        run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       
       - name: List runner OS
         run: echo "🐧 This job is now running on an ${{ runner.os }} amd64 server."
       
       - name: Get branch
-        run: echo "🔎 The name of your branch is ${{ git.ref }} and your repository is ${{ git.repository }}."
+        run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       
       - name: List environment variables
         run: env
@@ -29,14 +29,14 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Verify repo cloned
-        run: echo "💡 The ${{ git.repository }} repository has been cloned to the runner."
+        run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       
       - name: Check if runner is ready for testing code
         run: echo "🖥️ The workflow is now ready to test your code on the runner."
       
       - name: List files in the repository
         run: |
-          ls ${{ git.workspace }}
+          ls ${{ github.workspace }}
       
       - name: List job status
         run: echo "🍏 This job's status is ${{ job.status }}."
